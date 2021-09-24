@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block page_content %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% trans "List of posts" %}</title>
+    </head>
+    <div class="col-md-8 offset-md-2">
+        <h1 class="mt-2">{% trans "List of posts" %}</h1>
+        <hr>
+        {% for post in posts %}
+            <h2><a href="{% url 'detail_post' post.pk %}">{{ post.title }}</a></h2>
+            <small>
+                {{ post.created.date }} {% trans "was written by" %} {% if post.profile %}
+                {{ post.profile }} {% else %}
+                {% trans "man, who deleted his account" %} {% endif %}|&nbsp;
+                {% if post.comments.all %}
+                    {% trans 'Comments' %}: {{ post.comments.all|length }}&nbsp;
+                {% else %}
+                    {% trans "There isn't any comment" %}
+                {% endif %}
+            </small>
+            <p>{{ post.body | slice:":40" }}...</p>
+        {% endfor %}
+        <form action="/blog/create/post" method="get">
+            <button class="btn btn-primary" type="submit" data-toggle="collapse" data-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">{% trans "Create new post" %}
+            </button>
+        </form>
+    </div>
+{% endblock %}

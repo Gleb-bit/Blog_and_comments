@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block page_content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% trans "Detail account" %}</title>
+    </head>
+    <body>
+    <h2 class="m-3">{% trans "Hello" %}, {{ profile_list.name }}. {% trans "You can see information about you here" %}.</h2>
+    <ul>
+        <li>{% trans "Your name" %}: {{ profile_list.name }}</li>
+        <li>{% trans "Your surname" %}: {{ profile_list.surname }}</li>
+        {% if request.user.profile.about_me %}
+            <li>{% trans "You wrote about yourself" %}: {{ profile_list.about_me }}</li>
+        {% else %}
+            <li>{% trans "You have not written detail information about yourself yet." %}</li>
+        {% endif %}
+    </ul>
+    <form action="{{ request.user.profile.pk }}/edit" method="get">
+        <button class="btn btn-primary" type="submit" data-toggle="collapse" data-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">{% trans "Edit account" %}
+        </button>
+    </form>
+    </body>
+    </html>
+{% endblock %}
