@@ -29,11 +29,10 @@ class CommentForm(forms.ModelForm):
         })
     )
     image = forms.ImageField(required=False)
-    following_comment_id = forms.IntegerField(required=False)
 
     class Meta:
         model = Comment
-        exclude = ['created', 'post', 'user']
+        exclude = ['created', 'post', 'user', 'following_comment_id']
 
 
 class AccountForm(forms.ModelForm):
