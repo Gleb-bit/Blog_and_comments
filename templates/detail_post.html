@@ -115,7 +115,7 @@
                             <img src="{{ MEDIA_URL }}{{ following_comment.image.url }}" alt="" width="30%" height="30%">
                         {% endif %}
                         {% if request.user.id == following_comment.user.id %}
-                            <form action="/blog/edit/comment/{{ following_comment.id }}" method="get">
+                            <form action="{% url 'edit_follow_com' following_comment.pk %}" method="get">
                                 <button class="btn btn-primary" type="submit" data-toggle="collapse"
                                         data-target="#collapseExample"
                                         aria-expanded="false"

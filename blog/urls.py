@@ -7,6 +7,7 @@ urlpatterns = [
     path('<int:pk>/', DetailPostView.as_view(), name="detail_post"),
     path('create/post', CreatePostView.as_view(), name='create_post'),
     path('edit/comment/<int:pk>/', EditCommentView.as_view(), name='edit_comment'),
+    path('edit/following_comment/<int:pk>/', EditFollowingCommentView.as_view(), name='edit_follow_com'),
     path('edit/post/<int:pk>/', EditPostView.as_view(), name='edit_post'),
     path('delete/comment/<int:pk>/', DeleteCommentView.as_view(), name='del_comment'),
     path('create/folowing_comment/', CreateFollowingComment.as_view(), name='create_follow_com'),

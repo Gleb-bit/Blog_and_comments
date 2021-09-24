@@ -171,6 +171,19 @@ class EditCommentView(generic.UpdateView):
         return f'/blog/{post.pk}/'
 
 
+class EditFollowingCommentView(generic.UpdateView):
+    form_class = CommentForm
+    model = FollowingComment
+    template_name = 'edit_comment.html'
+
+    def get_success_url(self):
+        queryset = super().get_queryset()
+        current_comment = queryset.filter(pk=self.object.pk).first()
+        post = Post.objects.only('pk').filter(id=current_comment.parent_comment.post_id).first()
+
+        return f'/blog/{post.pk}/'
+
+
 class DeleteCommentView(generic.DeleteView):
     model = Comment
     template_name = 'delete_comment_confirm.html'
