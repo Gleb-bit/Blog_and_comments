@@ -1409,21 +1409,6 @@ msgstr ""
 #~ msgid "Home"
 #~ msgstr "Домашняя"
 
-#~ msgid "Detail project"
-#~ msgstr "Инфо о проекте"
-
-#~ msgid "About the project"
-#~ msgstr "О проекте"
-
-#~ msgid "Technology used"
-#~ msgstr "Использованная технология"
-
-#~ msgid "List of projects"
-#~ msgstr "Список проектов"
-
-#~ msgid "Projects"
-#~ msgstr "Проекты"
-
 #~ msgid "Read More"
 #~ msgstr "Читать больше"
 
